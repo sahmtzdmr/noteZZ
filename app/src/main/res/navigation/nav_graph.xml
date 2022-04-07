@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_notesDetailFragment"
+            app:destination="@id/notesDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_addNoteFragment"
+            app:destination="@id/addNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesDetailFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.details.NotesDetailFragment"
+        android:label="NotesDetailFragment">
+        <argument
+            android:name="noteID"
+            app:argType="integer" />
+        <argument
+            android:name="note"
+            app:argType="com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/addNoteFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.addnote.AddNoteFragment"
+        android:label="AddNoteFragment" />
+</navigation>
