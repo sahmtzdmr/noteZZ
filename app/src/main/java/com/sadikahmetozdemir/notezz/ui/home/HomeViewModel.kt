@@ -7,7 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
-import com.sadikahmetozdemir.notezz.ui.details.NotesDetailViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -17,9 +16,9 @@ class HomeViewModel @Inject constructor(
     private val defaultRepository: DefaultRepository,
     var savedStateHandle: SavedStateHandle
 ) : BaseViewModel() {
-    private val _notes: MutableLiveData<List<NotesDatabase>> = MutableLiveData()
+    val _notes: MutableLiveData<List<NotesDatabase>> = MutableLiveData()
     val notes: LiveData<List<NotesDatabase>> get() = _notes
-
+    var deletedNote: NotesDatabase? = null
 
 
     fun getNotes() {
@@ -38,10 +37,25 @@ class HomeViewModel @Inject constructor(
         navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment())
     }
 
-    fun goDetail(note:NotesDatabase) {
+    fun goDetail(note: NotesDatabase) {
         navigate(HomeFragmentDirections.actionHomeFragmentToNotesDetailFragment(note))
+    }
+
+    fun deleteNote() {
+        viewModelScope.launch {
+            sendRequest(request = {
+                deletedNote?.let { defaultRepository.deleteNote(it) }
+            }, success = {
+
+            })
+        }
+    }
+
+    fun toDialog() {
+        navigate(HomeFragmentDirections.actionHomeFragmentToNoteDialogFragment())
 
     }
+
     companion object {
         val NOTES_ID = "noteID"
         val NOTES = "note"

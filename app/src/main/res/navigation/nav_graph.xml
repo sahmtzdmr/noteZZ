@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_addNoteFragment"
             app:destination="@id/addNoteFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_noteDialogFragment"
+            app:destination="@id/noteDialogFragment" />
     </fragment>
     <fragment
         android:id="@+id/notesDetailFragment"
@@ -28,4 +31,11 @@
         android:id="@+id/addNoteFragment"
         android:name="com.sadikahmetozdemir.notezz.ui.addnote.AddNoteFragment"
         android:label="AddNoteFragment" />
+    <dialog
+        android:id="@+id/noteDialogFragment"
+        android:name="com.sadikahmetozdemir.notezz.dialog.NoteDialogFragment"
+        android:label="NoteDialogFragment">
+
+    </dialog>
+
 </navigation>

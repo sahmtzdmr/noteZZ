@@ -26,4 +26,10 @@ class DefaultRepository @Inject constructor(
         }
     }
 
+    suspend fun deleteNote(notesDatabase: NotesDatabase) {
+        return execute {
+            notesDao.delete(notesDatabase)
+        }
+    }
+
 }
