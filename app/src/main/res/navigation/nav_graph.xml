@@ -20,9 +20,6 @@
         android:name="com.sadikahmetozdemir.notezz.ui.details.NotesDetailFragment"
         android:label="NotesDetailFragment">
         <argument
-            android:name="noteID"
-            app:argType="integer" />
-        <argument
             android:name="note"
             app:argType="com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase"/>
 

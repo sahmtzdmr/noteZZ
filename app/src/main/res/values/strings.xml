@@ -8,4 +8,5 @@
     <string name="character">| 0 karakter</string>
     <string name="add_note">ekle</string>
     <string name="save_note">kaydet</string>
+    <string name="project_name">NoteZZ</string>
 </resources>

@@ -11,6 +11,7 @@ class NotesAdapter() :
     RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     private var noteList: List<NotesDatabase>? = null
+    var itemClicked: ((NotesDatabase) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             CustomNoteRawBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -26,7 +27,7 @@ class NotesAdapter() :
     }
 
     override fun getItemCount(): Int {
-       return noteList?.size ?: 0
+        return noteList?.size ?: 0
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -37,6 +38,15 @@ class NotesAdapter() :
 
     inner class ViewHolder(val binding: CustomNoteRawBinding) :
         RecyclerView.ViewHolder(binding.root) {
+        init {
+            if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                val currentItem = noteList?.get(bindingAdapterPosition)
+                currentItem?.let {
+                    itemClicked?.invoke(it)
+                }
+            }
+        }
+
         fun bind(item: NotesDatabase) {
             binding.apply {
                 data.text = item.data

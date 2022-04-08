@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home) {
 
-    var notesAdapter: NotesAdapter? = null
+   private lateinit var notesAdapter: NotesAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -19,6 +19,10 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = notesAdapter
+
+        }
+        notesAdapter.itemClicked = {
+            viewModel.goDetail(it)
         }
         initObserve()
 
@@ -26,7 +30,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
 
     fun initObserve() {
         viewModel.notes.observe(viewLifecycleOwner) {
-            notesAdapter?.setData(it)
+            notesAdapter.setData(it)
 
         }
     }

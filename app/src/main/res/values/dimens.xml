@@ -6,5 +6,8 @@
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="padding_10">10dp</dimen>
     <dimen name="text_size_11">11sp</dimen>
+    <dimen name="corner_radius_10">10dp</dimen>
+    <dimen name="elevation_12">12dp</dimen>
+    <dimen name="text_size_33">33sp</dimen>
 
 </resources>
