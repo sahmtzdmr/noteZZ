@@ -43,13 +43,27 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/currentDate" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_image"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bt_add"
+            android:src="@drawable/ic_launcher_background"
+            android:layout_marginBottom="@dimen/margin_8"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintVertical_bias="1"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_add"
-            android:layout_width="wrap_content"
+            style="@style/PrimaryButtonLarge.NoteZZ"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="@{()->vM.addNote()}"
             android:text="@string/add_note"
+            android:layout_margin="@dimen/margin_8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

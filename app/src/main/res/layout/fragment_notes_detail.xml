@@ -28,6 +28,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_image"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="@dimen/margin_8"
+            tools:src="@drawable/ic_launcher_background"
+            app:layout_constraintBottom_toTopOf="@id/bt_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="@dimen/margin_8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1" />
+
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/note"
@@ -50,6 +64,7 @@
             style="@style/PrimaryButtonLarge.NoteZZ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
             android:onClick="@{()->vM.saveOnClick()}"
             android:text="@string/save_note"
             app:layout_constraintBottom_toBottomOf="parent"

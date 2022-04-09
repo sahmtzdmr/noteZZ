@@ -13,14 +13,17 @@ class NotesDetailFragment :
     BaseFragment<FragmentNotesDetailBinding, NotesDetailViewModel>(R.layout.fragment_notes_detail) {
     private lateinit var date: Date
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fetchDate()
-
+        var imageBitmap = viewModel.notes?.image
+        binding.ivImage.setImageBitmap(imageBitmap)
     }
 
     private fun fetchDate() {
         date = Calendar.getInstance().time
         binding.currentDate.text = date.toString()
     }
+
 }

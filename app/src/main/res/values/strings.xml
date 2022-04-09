@@ -11,4 +11,6 @@
     <string name="project_name">NoteZZ</string>
     <string name="delete">Sil</string>
     <string name="cancel_bottom_sheet">İptal</string>
+    <string name="permission">Permission needed for gallery</string>
+    <string name="give_permission">Give Permission</string>
 </resources>
