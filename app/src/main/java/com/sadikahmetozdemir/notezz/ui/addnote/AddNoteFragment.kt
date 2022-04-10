@@ -91,8 +91,6 @@ class AddNoteFragment :
                                 )
                                 selectedBitmap = ImageDecoder.decodeBitmap(source)
                                 viewModel.image = selectedBitmap
-
-
                                 binding.ivImage.setImageBitmap(selectedBitmap)
                             } else {
                                 selectedBitmap = MediaStore.Images.Media.getBitmap(

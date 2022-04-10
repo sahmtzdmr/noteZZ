@@ -13,4 +13,5 @@
     <string name="cancel_bottom_sheet">İptal</string>
     <string name="permission">Permission needed for gallery</string>
     <string name="give_permission">Give Permission</string>
+    <string name="search">Search</string>
 </resources>

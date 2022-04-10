@@ -6,7 +6,6 @@ import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.io.File
 import java.util.*
 import javax.inject.Inject
 
@@ -35,13 +34,26 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
             saveData()
             sendRequest(request =
             {
-                defaultRepository.addNote(NotesDatabase(note, noteDate.toString(), getCharacter!!,image))
+                defaultRepository.addNote(
+                    NotesDatabase(
+                        note,
+                        noteDate.toString(),
+                        getCharacter!!,
+                        null
+                    )
+                )
             }, success = {
                 showMessage(SUCCESS_ADD)
                 backTo()
             }, error = {
                 it
             })
+        }
+    }
+
+    fun checkImage() {
+        if (image == null){
+            image
         }
     }
 

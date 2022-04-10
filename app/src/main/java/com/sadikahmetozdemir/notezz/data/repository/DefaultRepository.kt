@@ -1,5 +1,6 @@
 package com.sadikahmetozdemir.notezz.data.repository
 
+import androidx.lifecycle.LiveData
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.service.dao.NotesDao
 import javax.inject.Inject
@@ -30,6 +31,11 @@ class DefaultRepository @Inject constructor(
         return execute {
             notesDao.delete(notesDatabase)
         }
+    }
+
+     fun search(data: String): LiveData<List<NotesDatabase>> {
+        return notesDao.search(data)
+
     }
 
 }

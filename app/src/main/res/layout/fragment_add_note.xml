@@ -16,6 +16,29 @@
         android:layout_height="match_parent"
         tools:context=".ui.addnote.AddNoteFragment">
 
+        <androidx.appcompat.widget.Toolbar
+
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginBottom="@dimen/margin_15"
+            android:background="@color/search_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:id="@+id/toolbar_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/project_name"
+                android:fontFamily="@font/abril_fatface"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_33"
+                />
+        </androidx.appcompat.widget.Toolbar>
+
+
         <TextView
             android:layout_marginTop="@dimen/margin_5"
             android:id="@+id/currentDate"
@@ -25,7 +48,7 @@
             android:textSize="@dimen/text_size_18"
             app:fontFamily="@font/advent_pro"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/note"
@@ -45,13 +68,14 @@
             app:layout_constraintTop_toBottomOf="@id/currentDate" />
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/bt_add"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/ic_baseline_image_24"
             android:layout_marginBottom="@dimen/margin_8"
             app:layout_constraintHorizontal_bias="1"
             app:layout_constraintVertical_bias="1"/>
