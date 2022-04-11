@@ -10,7 +10,7 @@ import com.sadikahmetozdemir.notezz.databinding.CustomNoteRawBinding
 class NotesAdapter() :
     RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
-    private var noteList: List<NotesDatabase>? = null
+    private var noteList: ArrayList<NotesDatabase>? = null
     var itemClicked: ((NotesDatabase) -> Unit)? = null
     var DeleteItemClicked: ((NotesDatabase) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -31,9 +31,11 @@ class NotesAdapter() :
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(noteList: List<NotesDatabase>) {
+    fun setData(noteList: ArrayList<NotesDatabase>) {
+        this.noteList?.clear()
         this.noteList = noteList
         notifyDataSetChanged()
+        //notifyItemRangeInserted(0,noteList.lastIndex)
     }
 
     inner class ViewHolder(val binding: CustomNoteRawBinding) :

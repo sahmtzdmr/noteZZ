@@ -44,6 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:text="@string/details_date"
+            android:layout_marginStart="@dimen/margin_8"
             android:textSize="@dimen/text_size_18"
             app:fontFamily="@font/advent_pro"
             app:layout_constraintStart_toStartOf="parent"

@@ -42,6 +42,7 @@
             android:id="@+id/currentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
             android:layout_marginTop="@dimen/margin_5"
             android:text="@string/details_date"
             android:textSize="@dimen/text_size_18"

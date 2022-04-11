@@ -30,6 +30,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/data"
+                android:maxLines="2"
+                android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

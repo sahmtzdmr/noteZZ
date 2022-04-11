@@ -19,7 +19,7 @@ class HomeFragment :
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.searchView.setOnQueryTextListener(this)
+
         viewModel.getNotes()
         notesAdapter = NotesAdapter()
         binding.recyclerView.apply {
@@ -37,21 +37,30 @@ class HomeFragment :
         renderHome()
     }
 
+    override fun onPause() {
+        super.onPause()
+        binding.searchView.setOnQueryTextListener(null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.searchView.setOnQueryTextListener(this)
+    }
+
     private fun getItemsFromDB(data: String) {
         var searchText = data
         searchText = "%$data%"
         viewModel.search(searchText)
         viewModel.searchResult.observe(this) {
-            notesAdapter.setData(it)
+            notesAdapter.setData(ArrayList(it))
         }
     }
 
     fun initObserve() {
         viewModel.notes.observe(viewLifecycleOwner) {
-            notesAdapter.setData(it)
+            notesAdapter.setData(ArrayList(it))
         }
     }
-    @SuppressLint("NotifyDataSetChanged")
     fun renderHome() {
         binding.apply {
             setFragmentResultListener("request_delete") { _, bundle ->
@@ -71,7 +80,7 @@ class HomeFragment :
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        if (newText != null) {
+        if (newText != null && newText.isNotEmpty()) {
             getItemsFromDB(newText)
         }
         return true
