@@ -16,6 +16,7 @@ class HomeFragment :
     SearchView.OnQueryTextListener {
 
     private lateinit var notesAdapter: NotesAdapter
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -61,6 +62,7 @@ class HomeFragment :
             notesAdapter.setData(ArrayList(it))
         }
     }
+
     fun renderHome() {
         binding.apply {
             setFragmentResultListener("request_delete") { _, bundle ->
@@ -80,9 +82,11 @@ class HomeFragment :
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        if (newText != null && newText.isNotEmpty()) {
+        if (newText != null) {
             getItemsFromDB(newText)
+
         }
         return true
     }
+    
 }
