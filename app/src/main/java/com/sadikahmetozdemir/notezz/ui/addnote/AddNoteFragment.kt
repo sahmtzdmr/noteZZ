@@ -1,26 +1,36 @@
 package com.sadikahmetozdemir.notezz.ui.addnote
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.provider.MediaStore
 import android.view.View
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
 import com.sadikahmetozdemir.notezz.databinding.FragmentAddNoteBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
 import java.io.IOException
-
+import java.text.SimpleDateFormat
+import java.util.Date
 
 @AndroidEntryPoint
 class AddNoteFragment :
@@ -28,7 +38,6 @@ class AddNoteFragment :
     var selectedBitmap: Bitmap? = null
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,7 +51,6 @@ class AddNoteFragment :
         }
         registerLauncher()
     }
-
 
     fun selectImage() {
         if (ContextCompat.checkSelfPermission(
@@ -90,7 +98,13 @@ class AddNoteFragment :
                                     imageData!!
                                 )
                                 selectedBitmap = ImageDecoder.decodeBitmap(source)
-                                viewModel.image = selectedBitmap
+                                val file = createTempFile()
+                                selectedBitmap?.let {
+                                    convertBitmapToFile(file, it)
+                                    compressImage(file)
+                                    viewModel.image = file.absolutePath
+                                }
+
                                 binding.ivImage.setImageBitmap(selectedBitmap)
                             } else {
                                 selectedBitmap = MediaStore.Images.Media.getBitmap(
@@ -118,5 +132,50 @@ class AddNoteFragment :
                 }
             }
     }
+    private fun convertBitmapToFile(destination: File, bitmap: Bitmap) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            destination.createNewFile()
+            val bos = ByteArrayOutputStream()
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bos)
+            val bitmapData = bos.toByteArray()
+            try {
+                val fos = FileOutputStream(destination)
+                fos.write(bitmapData)
+                fos.flush()
+                fos.close()
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
 
+    @SuppressLint("SimpleDateFormat")
+    private fun createTempFile(): File {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val storageDir: File? = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        return File.createTempFile(
+            "JPEG_${timeStamp}_", // prefix
+            ".jpg", // suffix
+            storageDir // directory
+        )
+    }
+    private fun compressImage(filePath: File, targetMb: Double = 1.0) {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val image: Bitmap = BitmapFactory.decodeFile(filePath.absolutePath)
+                val length = filePath.length()
+                val fileSizeInKB = (length / 1024).toString().toDouble()
+                val fileSizeInMB = (fileSizeInKB / 1024).toString().toDouble()
+                var quality = 100
+                if (fileSizeInMB > targetMb) {
+                    quality = ((targetMb / fileSizeInMB) * 100).toInt()
+                }
+                val fileOutputStream = FileOutputStream(filePath)
+                image.compress(Bitmap.CompressFormat.JPEG, quality, fileOutputStream)
+                fileOutputStream.close()
+            } catch (ex: Exception) {
+                ex.printStackTrace()
+            }
+        }
+    }
 }

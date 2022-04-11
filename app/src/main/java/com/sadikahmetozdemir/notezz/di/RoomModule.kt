@@ -32,13 +32,11 @@ object RoomModule {
     @Singleton
     fun provideAppDatabase(
         @ApplicationContext context: Context,
-        imageConverter: ImageConverter
     ): AppDatabase {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, "notes_test"
         ).fallbackToDestructiveMigration()
-            .addTypeConverter(imageConverter)
             .build()
     }
 }

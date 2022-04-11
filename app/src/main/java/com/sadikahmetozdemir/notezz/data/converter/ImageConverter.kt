@@ -9,7 +9,7 @@ import java.io.ByteArrayOutputStream
 @ProvidedTypeConverter
 class ImageConverter {
     @TypeConverter
-    fun fromBitmap(bitmap: Bitmap): ByteArray {
+    fun imageDbToJson(bitmap: Bitmap): ByteArray {
         val outputStream = ByteArrayOutputStream()
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         return outputStream.toByteArray()

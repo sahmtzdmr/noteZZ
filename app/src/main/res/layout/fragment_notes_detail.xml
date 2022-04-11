@@ -25,26 +25,24 @@
             android:background="@color/search_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/toolbar_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/project_name"
-                android:fontFamily="@font/abril_fatface"
                 android:layout_gravity="center"
-                android:textSize="@dimen/text_size_33"
-                />
+                android:fontFamily="@font/abril_fatface"
+                android:text="@string/project_name"
+                android:textSize="@dimen/text_size_33" />
         </androidx.appcompat.widget.Toolbar>
-
 
 
         <TextView
             android:id="@+id/currentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_5"
+            android:layout_marginTop="@dimen/margin_16"
             android:text="@string/details_date"
             android:textSize="@dimen/text_size_18"
             app:fontFamily="@font/advent_pro"
@@ -53,17 +51,20 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
-            android:layout_width="150dp"
-            android:layout_height="200dp"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginEnd="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_8"
-            tools:src="@drawable/ic_launcher_background"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{()->vM.toImage()}"
             app:layout_constraintBottom_toTopOf="@id/bt_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1"
-            android:layout_marginEnd="@dimen/margin_8"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1" />
+            app:layout_constraintStart_toEndOf="@id/currentDate"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintVertical_bias="0"
+            tools:src="@drawable/ic_launcher_background" />
 
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -80,7 +81,7 @@
             app:layout_constraintBottom_toTopOf="@id/bt_save"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/currentDate" />
+            app:layout_constraintTop_toBottomOf="@id/iv_image" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_save"

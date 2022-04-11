@@ -25,25 +25,24 @@
             android:background="@color/search_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/toolbar_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/project_name"
-                android:fontFamily="@font/abril_fatface"
                 android:layout_gravity="center"
-                android:textSize="@dimen/text_size_33"
-                />
+                android:fontFamily="@font/abril_fatface"
+                android:text="@string/project_name"
+                android:textSize="@dimen/text_size_33" />
         </androidx.appcompat.widget.Toolbar>
 
 
         <TextView
-            android:layout_marginTop="@dimen/margin_5"
             android:id="@+id/currentDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_5"
             android:text="@string/details_date"
             android:textSize="@dimen/text_size_18"
             app:fontFamily="@font/advent_pro"
@@ -66,28 +65,29 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/currentDate" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
 
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:src="@drawable/ic_baseline_image_24"
+            app:layout_constraintBottom_toTopOf="@id/bt_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/bt_add"
-            android:src="@drawable/ic_baseline_image_24"
-            android:layout_marginBottom="@dimen/margin_8"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintVertical_bias="1"/>
+            app:layout_constraintVertical_bias="1" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_add"
             style="@style/PrimaryButtonLarge.NoteZZ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
             android:onClick="@{()->vM.addNote()}"
             android:text="@string/add_note"
-            android:layout_margin="@dimen/margin_8"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

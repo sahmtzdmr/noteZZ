@@ -2,8 +2,6 @@ package com.sadikahmetozdemir.notezz.ui.home
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.setFragmentResultListener
@@ -13,11 +11,11 @@ import com.sadikahmetozdemir.notezz.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home),
+class HomeFragment :
+    BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.fragment_home),
     SearchView.OnQueryTextListener {
 
     private lateinit var notesAdapter: NotesAdapter
-
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -37,7 +35,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         }
         initObserve()
         renderHome()
-
     }
 
     private fun getItemsFromDB(data: String) {
@@ -47,25 +44,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         viewModel.searchResult.observe(this) {
             notesAdapter.setData(it)
         }
-
-
     }
-
 
     fun initObserve() {
         viewModel.notes.observe(viewLifecycleOwner) {
             notesAdapter.setData(it)
-
         }
     }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
-//        val searchView = search.actionView as SearchView
-//        searchView.isSubmitButtonEnabled = true
-//        searchView.setOnQueryTextListener(this)
-    }
-
     @SuppressLint("NotifyDataSetChanged")
     fun renderHome() {
         binding.apply {
@@ -73,13 +58,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
                 if (bundle.getBoolean("delete", false)) {
                     viewModel.deleteNote()
                     viewModel.getNotes()
-
                 }
             }
-
-
         }
-
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -95,6 +76,4 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(R.layout.f
         }
         return true
     }
-
-
 }

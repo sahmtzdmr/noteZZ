@@ -18,22 +18,23 @@ class NotesDetailViewModel @Inject constructor(
     val notes = savedStateHandle.get<NotesDatabase>(NOTES)
     val editableNote = MutableLiveData<String>(notes?.data)
 
-
     fun saveOnClick() {
-        sendRequest(request = {
-            notes?.let {
-                defaultRepository.saveNote(it)
-            }
-        },
-            success = { backTo() })
+        sendRequest(
+            request = {
+                notes?.let {
+                    defaultRepository.saveNote(it)
+                }
+            },
+            success = { backTo() }
+        )
     }
 
+    fun toImage() {
+        navigate(NotesDetailFragmentDirections.actionNotesDetailFragmentToImagePopUpFragment(notes))
+    }
 
     companion object {
         val NOTES_ID = "noteID"
         val NOTES = "note"
-
     }
-
-
 }

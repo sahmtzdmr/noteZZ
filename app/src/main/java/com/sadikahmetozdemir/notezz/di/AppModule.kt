@@ -14,7 +14,5 @@ object AppModule {
         notesDao: NotesDao
     ): DefaultRepository {
         return DefaultRepository(notesDao)
-
     }
-
 }

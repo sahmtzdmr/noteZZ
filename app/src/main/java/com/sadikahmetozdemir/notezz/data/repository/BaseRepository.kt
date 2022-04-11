@@ -16,6 +16,4 @@ abstract class BaseRepository() {
             throw (ex)
         }
     }
-
-
 }

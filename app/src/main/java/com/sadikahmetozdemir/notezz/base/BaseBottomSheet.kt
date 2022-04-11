@@ -39,7 +39,7 @@ abstract class BaseBottomSheet<VDB : ViewDataBinding, VM : BaseViewModel>(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT,
 
-            )
+        )
         viewModel = ViewModelProvider(this)[viewModelClass]
     }
 

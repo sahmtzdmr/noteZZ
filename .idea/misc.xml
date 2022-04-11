@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/custom_image_popup.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/custom_note_raw.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_add_note.xml" value="0.24452554744525548" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_image_pop_up.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_note_dialog.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_notes_detail.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/menu/menu.xml" value="0.12129629629629629" />

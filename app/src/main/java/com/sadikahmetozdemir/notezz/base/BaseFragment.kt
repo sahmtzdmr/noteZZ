@@ -13,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.sadikahmetozdemir.notezz.BR
-
 import com.sadikahmetozdemir.notezz.core.ui.findGenericSuperclass
 
 abstract class BaseFragment<VDB : ViewDataBinding, VM : BaseViewModel> constructor(

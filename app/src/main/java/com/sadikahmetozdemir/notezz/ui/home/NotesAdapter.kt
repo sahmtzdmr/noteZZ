@@ -19,7 +19,6 @@ class NotesAdapter() :
         return ViewHolder((binding))
     }
 
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val note = noteList?.get(position)
         note?.let {
@@ -30,7 +29,6 @@ class NotesAdapter() :
     override fun getItemCount(): Int {
         return noteList?.size ?: 0
     }
-
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(noteList: List<NotesDatabase>) {
@@ -56,9 +54,7 @@ class NotesAdapter() :
                         DeleteItemClicked?.invoke(it)
                     }
                 }
-
             }
-
         }
 
         fun bind(item: NotesDatabase) {

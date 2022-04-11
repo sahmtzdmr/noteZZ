@@ -21,14 +21,12 @@ class HomeViewModel @Inject constructor(
     var deletedNote: NotesDatabase? = null
     var searchResult: LiveData<List<NotesDatabase>> = MutableLiveData()
 
-
     fun getNotes() {
         sendRequest(
             request = { defaultRepository.getNotes() },
             success = {
                 viewModelScope.launch {
                     _notes.value = it
-                    _notes.value
                 }
             }
         )
@@ -52,21 +50,15 @@ class HomeViewModel @Inject constructor(
         sendRequest(request = {
             deletedNote?.let { defaultRepository.deleteNote(it) }
         }, success = {
-
         })
-
     }
 
     fun toDialog() {
         navigate(HomeFragmentDirections.actionHomeFragmentToNoteDialogFragment())
-
     }
 
     companion object {
         val NOTES_ID = "noteID"
         val NOTES = "note"
-
     }
-
-
 }

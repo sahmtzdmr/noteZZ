@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
@@ -24,7 +25,10 @@
         android:label="NotesDetailFragment">
         <argument
             android:name="note"
-            app:argType="com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase"/>
+            app:argType="com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase" />
+        <action
+            android:id="@+id/action_notesDetailFragment_to_imagePopUpFragment"
+            app:destination="@id/imagePopUpFragment" />
 
     </fragment>
     <fragment
@@ -37,5 +41,16 @@
         android:label="NoteDialogFragment">
 
     </dialog>
+    <fragment
+        android:id="@+id/imagePopUpFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.image.ImagePopUpFragment"
+        android:label="fragment_image_pop_up"
+        tools:layout="@layout/fragment_image_pop_up">
+        <argument
+            android:name="notes"
+            app:argType="com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase"
+            app:nullable="true" />
+
+    </fragment>
 
 </navigation>

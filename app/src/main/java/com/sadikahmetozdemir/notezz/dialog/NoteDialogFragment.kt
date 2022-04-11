@@ -13,7 +13,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.databinding.FragmentNoteDialogBinding
 
-
 class NoteDialogFragment : BottomSheetDialogFragment() {
     private var _binding: FragmentNoteDialogBinding? = null
     val binding: FragmentNoteDialogBinding get() = _binding!!
@@ -25,12 +24,11 @@ class NoteDialogFragment : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding =
-            FragmentNoteDialogBinding.inflate(inflater,container, false)
+            FragmentNoteDialogBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

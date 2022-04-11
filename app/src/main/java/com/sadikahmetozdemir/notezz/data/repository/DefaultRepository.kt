@@ -33,9 +33,7 @@ class DefaultRepository @Inject constructor(
         }
     }
 
-     fun search(data: String): LiveData<List<NotesDatabase>> {
+    fun search(data: String): LiveData<List<NotesDatabase>> {
         return notesDao.search(data)
-
     }
-
 }

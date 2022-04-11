@@ -3,7 +3,6 @@ package com.sadikahmetozdemir.notezz.core.ui
 import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Type
 
-
 /**
  * Searches for a given parameterized class type in the receivers type hierachy and returns it if it was found.
  * Returns `null` otherwise.
