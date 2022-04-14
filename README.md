@@ -10,7 +10,7 @@ It is a note application where you can add photos and search between notes.
 
 I used local database for saving notes. 
 I used MVVM as the design pattern.
-You can add notes, add photos for note, search for notes. 
+You can add notes with voice, add photos for note, search for notes. 
 
 ## Tech Stack
 
