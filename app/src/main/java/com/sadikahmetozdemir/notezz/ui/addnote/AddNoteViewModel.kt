@@ -13,7 +13,7 @@ import javax.inject.Inject
 class AddNoteViewModel @Inject constructor(private val defaultRepository: DefaultRepository) :
     BaseViewModel() {
     private val notes = MutableLiveData<NotesDatabase?>()
-    val noteData = MutableLiveData("")
+    var noteData = MutableLiveData("")
     var note: String? = null
     var noteDate = Date()
     private var getCharacter: Long? = null

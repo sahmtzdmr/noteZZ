@@ -69,7 +69,6 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_image"
-
             android:layout_width="@dimen/image_size"
             android:layout_height="@dimen/image_size"
             android:layout_marginBottom="@dimen/margin_8"
@@ -80,6 +79,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
             app:layout_constraintVertical_bias="1" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_16"
+            android:clickable="true"
+            android:contentDescription="@string/voice_to_speech"
+            app:borderWidth="0dp"
+            android:focusable="true"
+            android:backgroundTint="@color/button_color"
+            android:src="@drawable/ic_baseline_mic_24"
+            app:tint="@android:color/white"
+            app:elevation="@dimen/no_elevation"
+            app:layout_constraintBottom_toTopOf="@id/bt_add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_add"

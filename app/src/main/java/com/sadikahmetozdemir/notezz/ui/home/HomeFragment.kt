@@ -88,5 +88,5 @@ class HomeFragment :
         }
         return true
     }
-    
+
 }

@@ -14,4 +14,5 @@
     <string name="permission">Permission needed for gallery</string>
     <string name="give_permission">Give Permission</string>
     <string name="search">Search</string>
+    <string name="voice_to_speech">voice to speech</string>
 </resources>

@@ -12,7 +12,10 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.speech.RecognizerIntent
+import android.speech.SpeechRecognizer
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -30,11 +33,12 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
-import java.util.Date
+import java.util.*
 
 @AndroidEntryPoint
 class AddNoteFragment :
     BaseFragment<FragmentAddNoteBinding, AddNoteViewModel>(R.layout.fragment_add_note) {
+    private val rqSpeechRec = RQ_SPEECH_REC
     var selectedBitmap: Bitmap? = null
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
@@ -47,6 +51,9 @@ class AddNoteFragment :
             }
             ivImage.setOnClickListener {
                 selectImage()
+            }
+            fabVoice.setOnClickListener {
+                askSpeechInput()
             }
         }
         registerLauncher()
@@ -132,6 +139,7 @@ class AddNoteFragment :
                 }
             }
     }
+
     private fun convertBitmapToFile(destination: File, bitmap: Bitmap) {
         lifecycleScope.launch(Dispatchers.IO) {
             destination.createNewFile()
@@ -159,6 +167,7 @@ class AddNoteFragment :
             storageDir // directory
         )
     }
+
     private fun compressImage(filePath: File, targetMb: Double = 1.0) {
         lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -177,5 +186,38 @@ class AddNoteFragment :
                 ex.printStackTrace()
             }
         }
+    }
+
+    private fun askSpeechInput() {
+        if (!SpeechRecognizer.isRecognitionAvailable(requireActivity())) {
+            Toast.makeText(
+                requireActivity(),
+                "Speech recognition is not available",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
+            val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+            i.putExtra(
+                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+            )
+            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Bir şeyler söyleyin.")
+            startActivityForResult(i, rqSpeechRec)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == rqSpeechRec && resultCode == Activity.RESULT_OK) {
+            val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).let { text ->
+                text?.get(0)
+            }
+            binding.note.setText(result)
+        }
+    }
+
+    companion object {
+        const val RQ_SPEECH_REC = 102
     }
 }
