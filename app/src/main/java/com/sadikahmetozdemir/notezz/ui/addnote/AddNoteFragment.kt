@@ -202,7 +202,7 @@ class AddNoteFragment :
                 RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
             )
             i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-            i.putExtra(RecognizerIntent.EXTRA_PROMPT, "Bir şeyler söyleyin.")
+            i.putExtra(RecognizerIntent.EXTRA_PROMPT, RECOGNIZER_MESSAGE)
             startActivityForResult(i, rqSpeechRec)
         }
     }
@@ -219,5 +219,6 @@ class AddNoteFragment :
 
     companion object {
         const val RQ_SPEECH_REC = 102
+        const val RECOGNIZER_MESSAGE = "Bir Şeyler Söyleyin."
     }
 }
