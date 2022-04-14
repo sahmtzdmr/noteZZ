@@ -197,12 +197,15 @@ class AddNoteFragment :
             ).show()
         } else {
             val i = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
-            i.putExtra(
-                RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
-            )
-            i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
-            i.putExtra(RecognizerIntent.EXTRA_PROMPT, RECOGNIZER_MESSAGE)
+            i.apply {
+                putExtra(
+                    RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM
+                )
+                putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+                putExtra(RecognizerIntent.EXTRA_PROMPT, RECOGNIZER_MESSAGE)
+            }
+
             startActivityForResult(i, rqSpeechRec)
         }
     }

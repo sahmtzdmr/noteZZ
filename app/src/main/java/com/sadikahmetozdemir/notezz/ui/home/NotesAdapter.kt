@@ -35,7 +35,7 @@ class NotesAdapter() :
         this.noteList?.clear()
         this.noteList = noteList
         notifyDataSetChanged()
-        //notifyItemRangeInserted(0,noteList.lastIndex)
+        // notifyItemRangeInserted(0,noteList.lastIndex)
     }
 
     inner class ViewHolder(val binding: CustomNoteRawBinding) :

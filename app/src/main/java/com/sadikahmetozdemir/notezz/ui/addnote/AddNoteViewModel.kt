@@ -5,8 +5,8 @@ import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Date
 import java.util.Calendar
+import java.util.Date
 import javax.inject.Inject
 
 @HiltViewModel
@@ -47,8 +47,8 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
                     showToast(SUCCESS_ADD)
                     backTo()
                 }, error = {
-                    it
-                }
+                it
+            }
             )
         }
     }

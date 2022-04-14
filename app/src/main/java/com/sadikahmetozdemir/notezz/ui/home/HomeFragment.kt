@@ -84,9 +84,7 @@ class HomeFragment :
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
             getItemsFromDB(newText)
-
         }
         return true
     }
-
 }

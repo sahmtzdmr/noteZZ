@@ -66,5 +66,5 @@ abstract class BaseViewModel : ViewModel() {
 
     fun setExtras(key: String, value: Any) {
         baseEvent.value = BaseViewEvent.Extras(key, value)
-    } 
+    }
 }
