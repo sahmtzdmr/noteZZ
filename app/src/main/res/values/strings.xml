@@ -15,4 +15,5 @@
     <string name="give_permission">Give Permission</string>
     <string name="search">Search</string>
     <string name="voice_to_speech">voice to speech</string>
+    <string name="folder_name">Klasör Adı</string>
 </resources>

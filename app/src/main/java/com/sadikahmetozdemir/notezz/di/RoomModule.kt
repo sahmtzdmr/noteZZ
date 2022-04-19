@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.sadikahmetozdemir.notezz.data.converter.ImageConverter
 import com.sadikahmetozdemir.notezz.data.local.database.AppDatabase
+import com.sadikahmetozdemir.notezz.service.dao.FolderDao
 import com.sadikahmetozdemir.notezz.service.dao.NotesDao
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,12 @@ object RoomModule {
     @Singleton
     fun provideNotesDao(appDatabase: AppDatabase): NotesDao {
         return appDatabase.notesDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideFolderDao(appDatabase: AppDatabase): FolderDao {
+        return appDatabase.folderDao()
     }
 
     @Provides

@@ -2,11 +2,13 @@ package com.sadikahmetozdemir.notezz.data.repository
 
 import androidx.lifecycle.LiveData
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
+import com.sadikahmetozdemir.notezz.service.dao.FolderDao
 import com.sadikahmetozdemir.notezz.service.dao.NotesDao
 import javax.inject.Inject
 
 class DefaultRepository @Inject constructor(
-    private val notesDao: NotesDao
+    private val notesDao: NotesDao,
+    private val folderDao: FolderDao
 ) : BaseRepository() {
 
     suspend fun getNotes(): List<NotesDatabase> {
