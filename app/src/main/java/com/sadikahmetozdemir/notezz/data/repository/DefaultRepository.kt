@@ -1,6 +1,7 @@
 package com.sadikahmetozdemir.notezz.data.repository
 
 import androidx.lifecycle.LiveData
+import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.service.dao.FolderDao
 import com.sadikahmetozdemir.notezz.service.dao.NotesDao
@@ -37,5 +38,10 @@ class DefaultRepository @Inject constructor(
 
     fun search(data: String): LiveData<List<NotesDatabase>> {
         return notesDao.search(data)
+    }
+     suspend fun addFolder(folderDataBase: FolderDataBase){
+        return execute {
+            folderDao.insert(folderDataBase)
+        }
     }
 }
