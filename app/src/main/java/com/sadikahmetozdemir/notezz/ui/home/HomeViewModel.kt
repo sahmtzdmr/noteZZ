@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
+import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,6 +21,7 @@ class HomeViewModel @Inject constructor(
     val notes: LiveData<List<NotesDatabase>> get() = _notes
     var deletedNote: NotesDatabase? = null
     var searchResult: LiveData<List<NotesDatabase>> = MutableLiveData()
+
 
     fun getNotes() {
         sendRequest(
@@ -52,6 +54,8 @@ class HomeViewModel @Inject constructor(
         }, success = {
         })
     }
+
+
 
     fun toDialog() {
         navigate(HomeFragmentDirections.actionHomeFragmentToNoteDialogFragment())

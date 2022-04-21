@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.bundleOf
+import androidx.fragment.app.setFragmentResult
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sadikahmetozdemir.notezz.R
@@ -37,12 +40,18 @@ class AddFolderDialogFragment : BottomSheetDialogFragment() {
                         getString(R.string.folder_name_requested),
                         Toast.LENGTH_SHORT
                     ).show()
-                }
+                } else
+                    onAddClicked(etTextLayout.editText?.text.toString())
             }
             btCancel.setOnClickListener {
                 dismiss()
             }
         }
+    }
+
+    private fun onAddClicked(folderName: String) {
+        setFragmentResult("request_add", bundleOf("add" to folderName))
+        findNavController().popBackStack()
     }
 
 }
