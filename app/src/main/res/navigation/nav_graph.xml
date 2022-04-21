@@ -52,5 +52,9 @@
             app:nullable="true" />
 
     </fragment>
+    <fragment
+        android:id="@+id/homeFolderFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.home.folder.HomeFolderFragment"
+        android:label="HomeFolderFragment" />
 
 </navigation>
