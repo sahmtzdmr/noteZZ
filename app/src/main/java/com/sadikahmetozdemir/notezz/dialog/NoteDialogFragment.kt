@@ -34,14 +34,14 @@ class NoteDialogFragment : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btDelete.setOnClickListener {
-            onUnfollowClicked()
+            onDeleteClicked()
         }
         binding.btCancel.setOnClickListener {
             dismiss()
         }
     }
 
-    private fun onUnfollowClicked() {
+    private fun onDeleteClicked() {
         setFragmentResult("request_delete", bundleOf("delete" to true))
         findNavController().popBackStack()
     }

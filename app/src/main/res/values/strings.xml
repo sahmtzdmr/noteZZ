@@ -16,4 +16,6 @@
     <string name="search">Search</string>
     <string name="voice_to_speech">voice to speech</string>
     <string name="folder_name">Klasör Adı</string>
+    <string name="add_folder_name">Klasör ismi giriniz.</string>
+    <string name="add">Ekle</string>
 </resources>

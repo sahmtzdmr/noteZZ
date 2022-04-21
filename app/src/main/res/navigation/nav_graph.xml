@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFolderFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -55,6 +55,14 @@
     <fragment
         android:id="@+id/homeFolderFragment"
         android:name="com.sadikahmetozdemir.notezz.ui.home.folder.HomeFolderFragment"
-        android:label="HomeFolderFragment" />
+        android:label="HomeFolderFragment" >
+        <action
+            android:id="@+id/action_homeFolderFragment_to_addFolderDialogFragment"
+            app:destination="@id/addFolderDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/addFolderDialogFragment"
+        android:name="com.sadikahmetozdemir.notezz.dialog.AddFolderDialogFragment"
+        android:label="AddFolderDialogFragment" />
 
 </navigation>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        tools:context=".dialog.NoteDialogFragment">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/guide_8" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/guide_8" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_folder_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginBottom="@dimen/margin_30"
+            android:hint="@string/add_folder_name"
+            android:textColor="@color/cinder"
+            app:layout_constraintBottom_toTopOf="@id/bt_delete"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_delete"
+            style="@style/AlertButton.NoteZZ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:backgroundTint="@color/bottom_sheet"
+            android:letterSpacing="0"
+            android:text="@string/add"
+            android:textColor="@color/button_color"
+            android:textSize="@dimen/text_size_20"
+            app:cornerRadius="@dimen/corner_radius_10"
+            app:layout_constraintBottom_toTopOf="@id/bt_cancel"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/et_folder_name"
+            app:layout_constraintVertical_bias="1"
+            app:strokeColor="@color/cardview_light_background"
+            app:strokeWidth="@dimen/stroke_width" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_cancel"
+            style="@style/AlertButton.NoteZZ"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_16"
+            android:backgroundTint="@color/cardview_light_background"
+            android:letterSpacing="0"
+            android:text="@string/cancel_bottom_sheet"
+            android:textColor="@color/cancel"
+            android:textSize="@dimen/text_size_20"
+            app:cornerRadius="@dimen/corner_radius_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintTop_toBottomOf="@id/bt_delete"
+            app:layout_constraintVertical_bias="0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

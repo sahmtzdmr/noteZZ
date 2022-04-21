@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vM"
             type="com.sadikahmetozdemir.notezz.ui.home.folder.HomeFolderViewModel" />
@@ -59,7 +60,7 @@
             android:clickable="true"
             android:contentDescription="@string/add_note"
             android:focusable="true"
-            android:onClick="@{()->vM.goAddNote()}"
+            android:onClick="@{()->vM.addFolder()}"
             android:src="@drawable/ic_folder_add"
             app:borderWidth="0dp"
             app:elevation="@dimen/no_elevation"
