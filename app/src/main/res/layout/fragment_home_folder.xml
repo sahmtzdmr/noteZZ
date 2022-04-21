@@ -61,7 +61,7 @@
             android:contentDescription="@string/add_note"
             android:focusable="true"
             android:onClick="@{()->vM.addFolder()}"
-            android:src="@drawable/ic_folder_add"
+            android:src="@drawable/ic_baseline_create_new_folder_24"
             app:borderWidth="0dp"
             app:elevation="@dimen/no_elevation"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.sadikahmetozdemir.notezz.R
@@ -25,5 +26,25 @@ class AddFolderDialogFragment : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), R.style.TransparentBottomSheetDialog)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            btAdd.setOnClickListener {
+                if (etFolderName.text?.trim().isNullOrEmpty()) {
+                    Toast.makeText(
+                        requireActivity(),
+                        getString(R.string.folder_name_requested),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            btCancel.setOnClickListener {
+                dismiss()
+            }
+        }
+    }
+
 }
+
 

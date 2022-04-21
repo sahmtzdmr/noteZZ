@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".dialog.NoteDialogFragment">
 
@@ -26,6 +26,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/guide_8" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/et_textLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/guidelineLeft"
+            app:layout_constraintEnd_toEndOf="@id/guidelineRight"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bt_add">
+
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_folder_name"
@@ -39,9 +48,12 @@
             app:layout_constraintEnd_toEndOf="@id/guidelineRight"
             app:layout_constraintStart_toStartOf="@id/guidelineLeft"
             app:layout_constraintTop_toTopOf="parent" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_delete"
+            android:id="@+id/bt_add"
             style="@style/AlertButton.NoteZZ"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
