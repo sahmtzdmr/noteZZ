@@ -47,6 +47,7 @@
             android:layout_marginEnd="@dimen/margin_8"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="2"
+            android:foregroundGravity="fill"
             android:orientation="vertical"
             android:textAlignment="center"
             android:layout_marginTop="@dimen/margin_15"

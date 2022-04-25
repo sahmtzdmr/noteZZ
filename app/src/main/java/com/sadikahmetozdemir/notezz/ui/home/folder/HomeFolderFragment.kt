@@ -26,12 +26,14 @@ class HomeFolderFragment :
         }
         initObserve()
         renderHome()
+
     }
 
     fun initObserve() {
         viewModel.folder.observe(viewLifecycleOwner) {
             foldersAdapter.setData(ArrayList(it))
             folderList = ArrayList(it)
+
         }
     }
 
@@ -45,16 +47,15 @@ class HomeFolderFragment :
                     }?.let {
                         viewModel.addFolder(it)
                         folderList.add(it)
-                        foldersAdapter.setData(folderList)
-                        viewModel.fetchFolder()
                     }
-
-
-                    }
+                    foldersAdapter.setData(folderList)
+                    viewModel.fetchFolder()
                 }
             }
+            }
         }
-    }
+
+}
 
 
 
