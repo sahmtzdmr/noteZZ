@@ -1,6 +1,5 @@
 package com.sadikahmetozdemir.notezz.ui.home.folder
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFolderFragment :
     BaseFragment<FragmentHomeFolderBinding, HomeFolderViewModel>(R.layout.fragment_home_folder) {
     private lateinit var foldersAdapter: FoldersAdapter
+    private lateinit var folderList: ArrayList<FolderDataBase>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,29 +31,31 @@ class HomeFolderFragment :
     fun initObserve() {
         viewModel.folder.observe(viewLifecycleOwner) {
             foldersAdapter.setData(ArrayList(it))
+            folderList = ArrayList(it)
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     fun renderHome() {
         binding.apply {
             setFragmentResultListener("request_add") { _, bundle ->
                 val folderName = bundle.getString("add")
                 if (bundle.getString("add")?.isNotEmpty() == true) {
-                    folderName?.let { FolderDataBase(it) }?.let {
+                    folderName?.let { it1 ->
+                        FolderDataBase(it1)
+                    }?.let {
                         viewModel.addFolder(it)
-                        foldersAdapter.notifyDataSetChanged()
-
+                        folderList.add(it)
+                        foldersAdapter.setData(folderList)
+                        viewModel.fetchFolder()
                     }
 
 
-                    Log.d("tanım", "renderHome: $folderName ")
+                    }
                 }
             }
         }
     }
 
-}
 
 
 
