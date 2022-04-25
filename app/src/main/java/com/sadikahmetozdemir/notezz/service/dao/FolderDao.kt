@@ -14,7 +14,7 @@ interface FolderDao {
     suspend fun insert(folderDataBase: FolderDataBase)
 
     @Query("SELECT * FROM folder ORDER BY id DESC")
-    suspend fun getFolders(): List<NotesDatabase>
+    suspend fun getFolders(): List<FolderDataBase>
 
     @Delete
     suspend fun delete(note: NotesDatabase)

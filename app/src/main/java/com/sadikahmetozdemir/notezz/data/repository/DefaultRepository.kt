@@ -39,9 +39,14 @@ class DefaultRepository @Inject constructor(
     fun search(data: String): LiveData<List<NotesDatabase>> {
         return notesDao.search(data)
     }
-     suspend fun addFolder(folderDataBase: FolderDataBase){
+
+    suspend fun addFolder(folderDataBase: FolderDataBase) {
         return execute {
             folderDao.insert(folderDataBase)
         }
+    }
+
+    suspend fun getFolder(): List<FolderDataBase>{
+        return execute { folderDao.getFolders() }
     }
 }

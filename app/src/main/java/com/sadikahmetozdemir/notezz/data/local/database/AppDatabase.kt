@@ -12,7 +12,7 @@ import com.sadikahmetozdemir.notezz.service.dao.NotesDao
         NotesDatabase::class,
         FolderDataBase::class
     ],
-    version = 7
+    version = 8
 
 )
 abstract class AppDatabase : RoomDatabase() {

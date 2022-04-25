@@ -28,17 +28,15 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setData(noteList: ArrayList<FolderDataBase>) {
+    fun setData(folderList: ArrayList<FolderDataBase>) {
         this.folderList?.clear()
-        this.folderList = noteList
-        notifyDataSetChanged()
-        // notifyItemRangeInserted(0,noteList.lastIndex)
+        this.folderList = folderList
+        this.notifyDataSetChanged()
     }
 
     inner class ViewHolder(val binding: CustomFolderViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-
         }
 
         fun bind(item: FolderDataBase) {
