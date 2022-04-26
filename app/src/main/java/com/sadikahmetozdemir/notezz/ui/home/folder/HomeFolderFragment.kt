@@ -46,10 +46,10 @@ class HomeFolderFragment :
                         FolderDataBase(it1)
                     }?.let {
                         viewModel.addFolder(it)
-                        folderList.add(it)
+                        folderList.add(0,it)
                     }
                     foldersAdapter.setData(folderList)
-                    viewModel.fetchFolder()
+                   viewModel.fetchFolder()
                 }
             }
             }
