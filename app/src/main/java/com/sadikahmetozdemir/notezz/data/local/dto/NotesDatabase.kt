@@ -10,6 +10,7 @@ data class NotesDatabase(
     var date: String?,
     var characters: Long?,
     var image: String? = null,
+    var folder: FolderDataBase?
 ) : Serializable {
 
     @PrimaryKey(autoGenerate = true)

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_homeFragment_to_noteDialogFragment"
             app:destination="@id/noteDialogFragment" />
+        <argument
+            android:name="folderID"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/notesDetailFragment"
@@ -55,10 +58,13 @@
     <fragment
         android:id="@+id/homeFolderFragment"
         android:name="com.sadikahmetozdemir.notezz.ui.home.folder.HomeFolderFragment"
-        android:label="HomeFolderFragment" >
+        android:label="HomeFolderFragment">
         <action
             android:id="@+id/action_homeFolderFragment_to_addFolderDialogFragment"
             app:destination="@id/addFolderDialogFragment" />
+        <action
+            android:id="@+id/action_homeFolderFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <dialog
         android:id="@+id/addFolderDialogFragment"

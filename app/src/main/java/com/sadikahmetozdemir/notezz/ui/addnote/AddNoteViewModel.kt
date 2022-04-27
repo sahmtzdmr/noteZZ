@@ -1,16 +1,20 @@
 package com.sadikahmetozdemir.notezz.ui.addnote
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
+import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Calendar
-import java.util.Date
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class AddNoteViewModel @Inject constructor(private val defaultRepository: DefaultRepository) :
+class AddNoteViewModel @Inject constructor(
+    private val defaultRepository: DefaultRepository,
+    savedStateHandle: SavedStateHandle
+) :
     BaseViewModel() {
     private val notes = MutableLiveData<NotesDatabase?>()
     var noteData = MutableLiveData("")
@@ -18,6 +22,7 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
     var noteDate = Date()
     private var getCharacter: Long? = null
     var image: String? = null
+    private val folder = savedStateHandle.get<FolderDataBase>(FOLDER_ID)
 
     private fun saveData() {
         note = noteData.value.toString()
@@ -39,7 +44,8 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
                             note,
                             noteDate.toString(),
                             getCharacter!!,
-                            image
+                            image,
+                            folder
                         )
                     )
                 },
@@ -47,8 +53,8 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
                     showToast(SUCCESS_ADD)
                     backTo()
                 }, error = {
-                it
-            }
+                    it
+                }
             )
         }
     }
@@ -56,5 +62,6 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
     companion object {
         val ADD_TEXT = "Bir not giriniz."
         val SUCCESS_ADD = "Not başarıyla eklendi."
+        const val FOLDER_ID = "folderID"
     }
 }
