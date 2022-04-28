@@ -8,6 +8,7 @@ import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
+import com.sadikahmetozdemir.notezz.ui.addnote.AddNoteViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,6 +22,8 @@ class HomeViewModel @Inject constructor(
     val notes: LiveData<List<NotesDatabase>> get() = _notes
     var deletedNote: NotesDatabase? = null
     var searchResult: LiveData<List<NotesDatabase>> = MutableLiveData()
+//    private val folder = savedStateHandle.get<FolderDataBase>(AddNoteViewModel.FOLDER_ID)
+
 
 
     fun getNotes() {
@@ -34,8 +37,9 @@ class HomeViewModel @Inject constructor(
         )
     }
 
-    fun goAddNote() {
-        navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment())
+    fun goAddNote(folderDataBase: Int?) {
+        folderDataBase?.let { HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(it) }
+            ?.let { navigate(it) }
     }
 
     fun goDetail(note: NotesDatabase) {

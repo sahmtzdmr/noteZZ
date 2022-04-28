@@ -1,7 +1,6 @@
 package com.sadikahmetozdemir.notezz.ui.home.folder
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.setFragmentResultListener
 import com.sadikahmetozdemir.notezz.R
@@ -14,18 +13,24 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFolderFragment :
     BaseFragment<FragmentHomeFolderBinding, HomeFolderViewModel>(R.layout.fragment_home_folder) {
     private lateinit var foldersAdapter: FoldersAdapter
-    private lateinit var folderList: ArrayList<FolderDataBase>
+    private var folderList = ArrayList<FolderDataBase>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.fetchFolder()
         foldersAdapter = FoldersAdapter()
+//        folderList=ArrayList()
         binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = foldersAdapter
         }
+        foldersAdapter.itemClicked = {
+            viewModel.folder.value?.get(it-1)?.id?.let { it1 -> viewModel.toNotes(it1) }
+        }
+
         initObserve()
         renderHome()
+
 
     }
 
@@ -46,14 +51,14 @@ class HomeFolderFragment :
                         FolderDataBase(it1)
                     }?.let {
                         viewModel.addFolder(it)
-                        folderList.add(0,it)
+                        folderList.add(0, it)
                     }
                     foldersAdapter.setData(folderList)
-                   viewModel.fetchFolder()
+//                    viewModel.fetchFolder()
                 }
             }
-            }
         }
+    }
 
 }
 

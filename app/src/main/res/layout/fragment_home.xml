@@ -70,7 +70,6 @@
             app:borderWidth="0dp"
             android:focusable="true"
             android:backgroundTint="@color/button_color"
-            android:onClick="@{()->vM.goAddNote()}"
             android:src="@drawable/ic_baseline_notes_24"
             app:tint="@android:color/white"
             app:elevation="@dimen/no_elevation"

@@ -31,6 +31,7 @@ class AddNoteViewModel @Inject constructor(
     }
 
     fun addNote() {
+        folder
 
         if (noteData.value.isNullOrEmpty()) {
             showToast(ADD_TEXT)
@@ -45,7 +46,7 @@ class AddNoteViewModel @Inject constructor(
                             noteDate.toString(),
                             getCharacter!!,
                             image,
-                            folder
+                            folder!!
                         )
                     )
                 },

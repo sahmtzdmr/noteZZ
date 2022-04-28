@@ -17,6 +17,7 @@ class HomeFragment :
 
     private lateinit var notesAdapter: NotesAdapter
 
+
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,6 +34,11 @@ class HomeFragment :
         notesAdapter.DeleteItemClicked = {
             viewModel.toDialog()
             viewModel.deletedNote = it
+        }
+        binding.layerFAB.setOnClickListener {
+            val folder = arguments?.getInt("folderID")
+            folder?.let { it1 -> viewModel.goAddNote(folder) }
+
         }
         initObserve()
         renderHome()

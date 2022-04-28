@@ -10,6 +10,8 @@ import com.sadikahmetozdemir.notezz.databinding.CustomFolderViewBinding
 class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
 
     private var folderList: ArrayList<FolderDataBase>? = null
+    var itemClicked: ((Int) -> Unit)? = null
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
             CustomFolderViewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -24,12 +26,12 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return folderList?.size ?: 0
+        return folderList?.size?: 0
     }
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(folderList: ArrayList<FolderDataBase>) {
-        this.folderList?.clear()
+//        this.folderList?.clear()
         this.folderList = folderList
         this.notifyDataSetChanged()
     }
@@ -42,6 +44,11 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
         fun bind(item: FolderDataBase) {
             binding.apply {
                 tvFolderName.text = item.folder
+                ivFolder.setOnClickListener {
+                    item.id?.let { it1 -> itemClicked?.invoke(it1) }
+
+                }
+
             }
         }
     }
