@@ -10,7 +10,7 @@ import com.sadikahmetozdemir.notezz.databinding.CustomFolderViewBinding
 class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
 
     private var folderList: ArrayList<FolderDataBase>? = null
-    var itemClicked: ((Int) -> Unit)? = null
+    var itemClicked: ((FolderDataBase) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -45,7 +45,7 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
             binding.apply {
                 tvFolderName.text = item.folder
                 ivFolder.setOnClickListener {
-                    item.id?.let { it1 -> itemClicked?.invoke(it1) }
+                    item.let { itemClicked?.invoke(it) }
 
                 }
 

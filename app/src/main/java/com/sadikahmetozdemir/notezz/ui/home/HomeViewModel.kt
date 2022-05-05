@@ -37,7 +37,7 @@ class HomeViewModel @Inject constructor(
         )
     }
 
-    fun goAddNote(folderDataBase: Int?) {
+    fun goAddNote(folderDataBase: FolderDataBase?) {
         folderDataBase?.let { HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(it) }
             ?.let { navigate(it) }
     }

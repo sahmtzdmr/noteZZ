@@ -17,14 +17,14 @@
             app:destination="@id/addNoteFragment">
             <argument
                 android:name="folderID"
-                app:argType="integer" />
+                app:argType="com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase" />
         </action>
         <action
             android:id="@+id/action_homeFragment_to_noteDialogFragment"
             app:destination="@id/noteDialogFragment" />
         <argument
             android:name="folderID"
-            app:argType="integer" />
+            app:argType="com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase" />
     </fragment>
     <fragment
         android:id="@+id/notesDetailFragment"
@@ -44,7 +44,7 @@
         android:label="AddNoteFragment" />
     <argument
         android:name="folderID"
-        app:argType="integer" />
+        app:argType="com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase" />
     <dialog
         android:id="@+id/noteDialogFragment"
         android:name="com.sadikahmetozdemir.notezz.dialog.NoteDialogFragment"

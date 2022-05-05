@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.setFragmentResultListener
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
+import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,8 +37,8 @@ class HomeFragment :
             viewModel.deletedNote = it
         }
         binding.layerFAB.setOnClickListener {
-            val folder = arguments?.getInt("folderID")
-            folder?.let { it1 -> viewModel.goAddNote(folder) }
+            val folder = arguments?.get("folderID")
+            folder?.let { it1 -> viewModel.goAddNote(folder as FolderDataBase?) }
 
         }
         initObserve()
