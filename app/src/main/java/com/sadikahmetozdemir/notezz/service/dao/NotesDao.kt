@@ -1,12 +1,7 @@
 package com.sadikahmetozdemir.notezz.service.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 
 @Dao
@@ -23,6 +18,9 @@ interface NotesDao {
 
     @Query("SELECT * FROM notes WHERE data LIKE :data")
     fun search(data: String): LiveData<List<NotesDatabase>>
+
+    @Query("select * from notes where folder_id=:folderId")
+    suspend fun getNotesByFolder(folderId: Int): List<NotesDatabase>
 
     @Delete
     suspend fun delete(note: NotesDatabase)
