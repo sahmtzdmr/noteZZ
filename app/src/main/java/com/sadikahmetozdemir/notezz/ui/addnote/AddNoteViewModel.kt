@@ -3,7 +3,6 @@ package com.sadikahmetozdemir.notezz.ui.addnote
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
-import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,7 @@ class AddNoteViewModel @Inject constructor(
     var noteDate = Date()
     private var getCharacter: Long? = null
     var image: String? = null
-    private val folder = savedStateHandle.get<FolderDataBase>(FOLDER_ID)
+    var folderId: Int? = null
 
     private fun saveData() {
         note = noteData.value.toString()
@@ -31,8 +30,6 @@ class AddNoteViewModel @Inject constructor(
     }
 
     fun addNote() {
-        folder
-
         if (noteData.value.isNullOrEmpty()) {
             showToast(ADD_TEXT)
         } else {
@@ -46,7 +43,7 @@ class AddNoteViewModel @Inject constructor(
                             noteDate.toString(),
                             getCharacter!!,
                             image,
-                            folder!!
+                            folderId!!
                         )
                     )
                 },

@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
-import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
-import com.sadikahmetozdemir.notezz.ui.addnote.AddNoteViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -22,9 +20,8 @@ class HomeViewModel @Inject constructor(
     val notes: LiveData<List<NotesDatabase>> get() = _notes
     var deletedNote: NotesDatabase? = null
     var searchResult: LiveData<List<NotesDatabase>> = MutableLiveData()
+    //private val folderId: Int = savedStateHandle.get<Int>("folderId") ?: -1
 //    private val folder = savedStateHandle.get<FolderDataBase>(AddNoteViewModel.FOLDER_ID)
-
-
 
     fun getNotes() {
         sendRequest(
@@ -37,9 +34,19 @@ class HomeViewModel @Inject constructor(
         )
     }
 
-    fun goAddNote(folderDataBase: FolderDataBase?) {
-        folderDataBase?.let { HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(it) }
-            ?.let { navigate(it) }
+    fun getNotesByFolder(folderId: Int) {
+        sendRequest(
+            request = {
+                defaultRepository.getNotesByFolder(folderId)
+            },
+            success = {
+                _notes.value = it
+            }
+        )
+    }
+
+    fun goAddNote(folderId: Int?) {
+        navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(folderId!!))
     }
 
     fun goDetail(note: NotesDatabase) {
@@ -60,7 +67,6 @@ class HomeViewModel @Inject constructor(
     }
 
 
-
     fun toDialog() {
         navigate(HomeFragmentDirections.actionHomeFragmentToNoteDialogFragment())
     }
@@ -68,5 +74,6 @@ class HomeViewModel @Inject constructor(
     companion object {
         val NOTES_ID = "noteID"
         val NOTES = "note"
+        private const val FOLDERID = "folderId"
     }
 }

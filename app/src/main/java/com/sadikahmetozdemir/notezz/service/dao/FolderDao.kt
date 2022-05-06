@@ -13,7 +13,7 @@ interface FolderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(folderDataBase: FolderDataBase)
 
-    @Query("SELECT * FROM folder ORDER BY id DESC")
+    @Query("SELECT * FROM folder ORDER BY folder_id DESC")
     suspend fun getFolders(): List<FolderDataBase>
 
     @Delete

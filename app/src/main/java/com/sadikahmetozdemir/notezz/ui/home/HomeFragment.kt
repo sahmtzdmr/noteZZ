@@ -7,7 +7,6 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.setFragmentResultListener
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
-import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,13 +16,15 @@ class HomeFragment :
     SearchView.OnQueryTextListener {
 
     private lateinit var notesAdapter: NotesAdapter
-
+    private var folderId: Int? = null
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.getNotes()
+        folderId = arguments?.getInt("folderId") ?: -1
+
+        viewModel.getNotesByFolder(folderId!!)
         notesAdapter = NotesAdapter()
         binding.recyclerView.apply {
             setHasFixedSize(true)
@@ -37,8 +38,8 @@ class HomeFragment :
             viewModel.deletedNote = it
         }
         binding.layerFAB.setOnClickListener {
-            val folder = arguments?.get("folderID")
-            folder?.let { it1 -> viewModel.goAddNote(folder as FolderDataBase?) }
+            val folder: Int = arguments?.getInt("folderId") ?: -1
+            folder.let { it1 -> viewModel.goAddNote(folder) }
 
         }
         initObserve()
@@ -75,7 +76,7 @@ class HomeFragment :
             setFragmentResultListener("request_delete") { _, bundle ->
                 if (bundle.getBoolean("delete", false)) {
                     viewModel.deleteNote()
-                    viewModel.getNotes()
+                    viewModel.getNotesByFolder(folderId!!)
                 }
             }
         }

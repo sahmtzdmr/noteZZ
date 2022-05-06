@@ -46,7 +46,6 @@ object RoomModule {
             context,
             AppDatabase::class.java, "notes_test"
         ).fallbackToDestructiveMigration()
-            .addTypeConverter(folderConverter)
             .build()
     }
 }

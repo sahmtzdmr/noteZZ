@@ -14,11 +14,8 @@ import com.sadikahmetozdemir.notezz.service.dao.NotesDao
         NotesDatabase::class,
         FolderDataBase::class
     ],
-    version = 10
+    version = 14
 
-)
-@TypeConverters(
-    FolderConverter::class
 )
 
 abstract class AppDatabase : RoomDatabase() {

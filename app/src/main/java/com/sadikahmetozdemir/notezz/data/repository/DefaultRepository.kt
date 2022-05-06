@@ -46,7 +46,14 @@ class DefaultRepository @Inject constructor(
         }
     }
 
-    suspend fun getFolder(): List<FolderDataBase>{
+    suspend fun getNotesByFolder(folderId: Int): List<NotesDatabase> {
+        return execute {
+            folderId
+            notesDao.getNotesByFolder(folderId)
+        }
+    }
+
+    suspend fun getFolder(): List<FolderDataBase> {
         return execute { folderDao.getFolders() }
     }
 }

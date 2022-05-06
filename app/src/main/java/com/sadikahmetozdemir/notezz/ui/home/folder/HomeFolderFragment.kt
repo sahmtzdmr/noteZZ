@@ -25,15 +25,7 @@ class HomeFolderFragment :
             adapter = foldersAdapter
         }
         foldersAdapter.itemClicked = {
-            it.id?.let { it1 ->
-                viewModel.folder.value?.get(it1-1).let { it1 ->
-                    it1?.let { it2 ->
-                        viewModel.toNotes(
-                            it2
-                        )
-                    }
-                }
-            }
+            viewModel.toNotes(it)
         }
 
         initObserve()

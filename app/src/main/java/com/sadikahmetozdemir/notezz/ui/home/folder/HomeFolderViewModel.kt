@@ -30,12 +30,12 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
             })
     }
 
-    fun toNotes(folderID: FolderDataBase) {
-        folderID.let {
+    fun toNotes(folderID: Int) {
+        navigate(
             HomeFolderFragmentDirections.actionHomeFolderFragmentToHomeFragment(
-                it
+                folderID
             )
-        }.let { navigate(it) }
+        )
     }
 
     fun fetchFolder() {
