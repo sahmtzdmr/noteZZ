@@ -24,6 +24,10 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
     fun addFolder(folderDataBase: FolderDataBase) {
         sendRequest(request = {
             defaultRepository.addFolder(folderDataBase)
+            defaultRepository.getFolder()
+
+        }, success = {
+            _folder.value =it
         },
             error = {
                 it

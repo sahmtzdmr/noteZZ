@@ -13,13 +13,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFolderFragment :
     BaseFragment<FragmentHomeFolderBinding, HomeFolderViewModel>(R.layout.fragment_home_folder) {
     private lateinit var foldersAdapter: FoldersAdapter
-    private var folderList = ArrayList<FolderDataBase>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel.fetchFolder()
         foldersAdapter = FoldersAdapter()
-//        folderList=ArrayList()
         binding.recyclerView.apply {
             setHasFixedSize(true)
             adapter = foldersAdapter
@@ -27,6 +26,7 @@ class HomeFolderFragment :
         foldersAdapter.itemClicked = {
             viewModel.toNotes(it)
         }
+
 
         initObserve()
         renderHome()
@@ -37,7 +37,7 @@ class HomeFolderFragment :
     fun initObserve() {
         viewModel.folder.observe(viewLifecycleOwner) {
             foldersAdapter.setData(ArrayList(it))
-            folderList = ArrayList(it)
+
 
         }
     }
@@ -46,21 +46,20 @@ class HomeFolderFragment :
         binding.apply {
             setFragmentResultListener("request_add") { _, bundle ->
                 val folderName = bundle.getString("add")
+                val folderID = bundle.getInt("add")
                 if (bundle.getString("add")?.isNotEmpty() == true) {
                     folderName?.let { it1 ->
                         FolderDataBase(it1)
                     }?.let {
                         viewModel.addFolder(it)
-                        folderList.add(0, it)
+
                     }
-                    foldersAdapter.setData(folderList)
-//                    viewModel.fetchFolder()
                 }
             }
         }
     }
-
 }
+
 
 
 
