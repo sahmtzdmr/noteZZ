@@ -6,6 +6,7 @@ import androidx.room.ForeignKey
 import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import java.io.Serializable
+import java.util.*
 
 @Entity(
     tableName = "notes",
@@ -18,7 +19,7 @@ import java.io.Serializable
 )
 data class NotesDatabase(
     var data: String?,
-    var date: String?,
+    var date: Date?,
     var characters: Long?,
     var image: String? = null,
     @ColumnInfo(name = "folder_id")

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.sadikahmetozdemir.notezz.ui.home.HomeFragment"
+        android:name="com.sadikahmetozdemir.notezz.ui.home.note.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_notesDetailFragment"

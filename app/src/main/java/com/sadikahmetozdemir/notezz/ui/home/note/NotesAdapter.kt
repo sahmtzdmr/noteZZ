@@ -1,4 +1,4 @@
-package com.sadikahmetozdemir.notezz.ui.home
+package com.sadikahmetozdemir.notezz.ui.home.note
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.databinding.CustomNoteRawBinding
+import com.sadikahmetozdemir.notezz.utils.toDateString
 
-class NotesAdapter() :
+class NotesAdapter :
     RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     private var noteList: ArrayList<NotesDatabase>? = null
@@ -62,7 +63,7 @@ class NotesAdapter() :
         fun bind(item: NotesDatabase) {
             binding.apply {
                 data.text = item.data
-                date.text = item.date
+                date.text = item.date?.toDateString()
             }
         }
     }

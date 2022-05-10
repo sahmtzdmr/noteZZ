@@ -12,6 +12,8 @@ import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
 import com.sadikahmetozdemir.notezz.databinding.FragmentNotesDetailBinding
 import com.sadikahmetozdemir.notezz.ui.addnote.AddNoteFragment
+import com.sadikahmetozdemir.notezz.utils.load
+import com.sadikahmetozdemir.notezz.utils.toDateString
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -23,23 +25,14 @@ class NotesDetailFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchDate()
+
         val imageString = viewModel.notes?.image
-        Glide
-            .with(requireContext())
-            .load(imageString)
-            .placeholder(R.drawable.ic_baseline_image_24)
-            .into(binding.ivImage)
+        binding.ivImage.load(url = imageString)
+        binding.currentDate.text = date.toDateString()
         binding.fabVoice.setOnClickListener {
             askSpeechInput()
         }
     }
-
-    private fun fetchDate() {
-        date = Calendar.getInstance().time
-        binding.currentDate.text = date.toString()
-    }
-
     private fun askSpeechInput() {
         if (!SpeechRecognizer.isRecognitionAvailable(requireActivity())) {
             Toast.makeText(

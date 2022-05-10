@@ -11,8 +11,8 @@
     <string name="project_name">NoteZZ</string>
     <string name="delete">Sil</string>
     <string name="cancel_bottom_sheet">İptal</string>
-    <string name="permission">Permission needed for gallery</string>
-    <string name="give_permission">Give Permission</string>
+    <string name="permission">Galeriye gidebilmeniz için izin vermeniz gereklidir.</string>
+    <string name="give_permission">İzin ver</string>
     <string name="search">Search</string>
     <string name="voice_to_speech">voice to speech</string>
     <string name="folder_name">Klasör Adı</string>

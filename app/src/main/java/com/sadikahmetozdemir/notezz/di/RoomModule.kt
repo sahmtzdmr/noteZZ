@@ -2,7 +2,7 @@ package com.sadikahmetozdemir.notezz.di
 
 import android.content.Context
 import androidx.room.Room
-import com.sadikahmetozdemir.notezz.data.converter.FolderConverter
+import com.sadikahmetozdemir.notezz.data.converter.DateConverter
 import com.sadikahmetozdemir.notezz.data.converter.ImageConverter
 import com.sadikahmetozdemir.notezz.data.local.database.AppDatabase
 import com.sadikahmetozdemir.notezz.service.dao.FolderDao
@@ -38,14 +38,21 @@ object RoomModule {
 
     @Provides
     @Singleton
+    fun provideDateConverter(): DateConverter {
+        return DateConverter()
+    }
+
+    @Provides
+    @Singleton
     fun provideAppDatabase(
         @ApplicationContext context: Context,
-        folderConverter: FolderConverter
+        dateConverter: DateConverter
     ): AppDatabase {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java, "notes_test"
         ).fallbackToDestructiveMigration()
+            .addTypeConverter(dateConverter)
             .build()
     }
 }

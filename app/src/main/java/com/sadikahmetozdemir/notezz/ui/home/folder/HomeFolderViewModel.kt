@@ -15,7 +15,6 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
     BaseViewModel() {
     private val _folder: MutableLiveData<List<FolderDataBase>> = MutableLiveData()
     val folder: LiveData<List<FolderDataBase>> get() = _folder
-    var folderTitle: String? = null
 
     fun goToFolder() {
         navigate(HomeFolderFragmentDirections.actionHomeFolderFragmentToAddFolderDialogFragment())

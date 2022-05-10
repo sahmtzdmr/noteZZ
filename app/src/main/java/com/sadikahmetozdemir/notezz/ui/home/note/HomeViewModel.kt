@@ -1,4 +1,4 @@
-package com.sadikahmetozdemir.notezz.ui.home
+package com.sadikahmetozdemir.notezz.ui.home.note
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -46,11 +46,19 @@ class HomeViewModel @Inject constructor(
     }
 
     fun goAddNote(folderId: Int?) {
-        navigate(HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(folderId!!))
+        navigate(
+            HomeFragmentDirections.actionHomeFragmentToAddNoteFragment(
+                folderId!!
+            )
+        )
     }
 
     fun goDetail(note: NotesDatabase) {
-        navigate(HomeFragmentDirections.actionHomeFragmentToNotesDetailFragment(note))
+        navigate(
+            HomeFragmentDirections.actionHomeFragmentToNotesDetailFragment(
+                note
+            )
+        )
     }
 
     fun search(data: String) {

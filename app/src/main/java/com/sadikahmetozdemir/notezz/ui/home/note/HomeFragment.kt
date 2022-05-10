@@ -1,4 +1,4 @@
-package com.sadikahmetozdemir.notezz.ui.home
+package com.sadikahmetozdemir.notezz.ui.home.note
 
 import android.annotation.SuppressLint
 import android.os.Bundle

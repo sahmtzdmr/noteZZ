@@ -40,7 +40,7 @@ class AddNoteViewModel @Inject constructor(
                     defaultRepository.addNote(
                         NotesDatabase(
                             note,
-                            noteDate.toString(),
+                            noteDate,
                             getCharacter!!,
                             image,
                             folderId!!

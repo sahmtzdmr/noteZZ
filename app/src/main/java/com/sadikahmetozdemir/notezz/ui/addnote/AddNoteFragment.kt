@@ -142,6 +142,7 @@ class AddNoteFragment :
                     activityResultLauncher.launch(intentToGallery)
                 } else {
                     // permission denied
+
                     // Toast
                 }
             }
