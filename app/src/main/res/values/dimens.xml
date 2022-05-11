@@ -19,5 +19,6 @@
     <dimen name="image_size">64dp</dimen>
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_52">52dp</dimen>
+    <dimen name="thrash_size">42dp</dimen>
 
 </resources>
