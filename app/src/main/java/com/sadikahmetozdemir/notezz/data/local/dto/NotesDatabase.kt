@@ -11,12 +11,14 @@ import java.util.*
 
 @Entity(
     tableName = "notes",
-    foreignKeys = [ForeignKey(
-        entity = FolderDataBase::class,
-        parentColumns = ["folder_id"],
-        childColumns = ["folder_id"],
-        onDelete = CASCADE
-    )]
+    foreignKeys = [
+        ForeignKey(
+            entity = FolderDataBase::class,
+            parentColumns = ["folder_id"],
+            childColumns = ["folder_id"],
+            onDelete = CASCADE
+        )
+    ]
 )
 @Parcelize
 data class NotesDatabase(

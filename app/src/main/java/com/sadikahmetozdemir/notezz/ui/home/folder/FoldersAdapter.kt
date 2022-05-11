@@ -43,10 +43,10 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
             binding.apply {
                 tvFolderName.text = item.folder
                 ivFolder.setOnClickListener {
-                        item.folderId?.let { folderId ->
-                            folderId
-                            itemClicked?.invoke(folderId)
-                        }
+                    item.folderId?.let { folderId ->
+                        folderId
+                        itemClicked?.invoke(folderId)
+                    }
                 }
             }
         }

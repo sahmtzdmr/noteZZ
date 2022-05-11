@@ -53,7 +53,4 @@ class AddFolderDialogFragment : BottomSheetDialogFragment() {
         setFragmentResult("request_add", bundleOf("add" to folderName))
         findNavController().popBackStack()
     }
-
 }
-
-

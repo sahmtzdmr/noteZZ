@@ -8,9 +8,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="search_color">#f1f1f1</color>
-    <color name="statusbar_color">#616161</color>
-    <color name="button_color">#FF5252</color>
+    <color name="search_color">#cddc39</color>
+    <color name="statusbar_color">#99aa00</color>
+    <color name="button_color">#7b1fa2</color>
     <color name="splash">#90A4AE</color>
     <color name="cancel">#007AFF</color>
     <color name="cinder">#212529</color>

@@ -51,8 +51,8 @@ class AddNoteViewModel @Inject constructor(
                     showToast(SUCCESS_ADD)
                     backTo()
                 }, error = {
-                    it
-                }
+                it
+            }
             )
         }
     }

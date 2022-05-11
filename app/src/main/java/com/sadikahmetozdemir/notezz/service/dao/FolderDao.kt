@@ -18,5 +18,4 @@ interface FolderDao {
 
     @Delete
     suspend fun delete(note: NotesDatabase)
-
 }

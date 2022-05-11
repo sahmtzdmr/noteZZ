@@ -25,7 +25,6 @@ class NotesDetailViewModel @Inject constructor(
                 notes?.let {
                     it.date = Calendar.getInstance().time
                     defaultRepository.saveNote(it)
-
                 }
             },
             success = { backTo() }

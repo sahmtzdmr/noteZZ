@@ -16,6 +16,5 @@ object AppModule {
         folderDao: FolderDao
     ): DefaultRepository {
         return DefaultRepository(notesDao, folderDao)
-
     }
 }

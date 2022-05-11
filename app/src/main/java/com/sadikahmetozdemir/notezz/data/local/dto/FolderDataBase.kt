@@ -12,7 +12,7 @@ import kotlinx.parcelize.Parcelize
 data class FolderDataBase(
     var folder: String,
 
-    ) : Parcelable {
+) : Parcelable {
     @IgnoredOnParcel
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "folder_id")
