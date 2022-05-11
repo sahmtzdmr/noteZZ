@@ -7,7 +7,6 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.view.View
 import android.widget.Toast
-import com.bumptech.glide.Glide
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
 import com.sadikahmetozdemir.notezz.databinding.FragmentNotesDetailBinding
@@ -28,11 +27,13 @@ class NotesDetailFragment :
 
         val imageString = viewModel.notes?.image
         binding.ivImage.load(url = imageString)
+        date = Calendar.getInstance().time
         binding.currentDate.text = date.toDateString()
         binding.fabVoice.setOnClickListener {
             askSpeechInput()
         }
     }
+
     private fun askSpeechInput() {
         if (!SpeechRecognizer.isRecognitionAvailable(requireActivity())) {
             Toast.makeText(

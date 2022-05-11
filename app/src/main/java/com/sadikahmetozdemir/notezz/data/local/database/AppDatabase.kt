@@ -14,7 +14,7 @@ import com.sadikahmetozdemir.notezz.service.dao.NotesDao
         NotesDatabase::class,
         FolderDataBase::class
     ],
-    version = 16
+    version = 19
 )
 @TypeConverters(DateConverter::class)
 
