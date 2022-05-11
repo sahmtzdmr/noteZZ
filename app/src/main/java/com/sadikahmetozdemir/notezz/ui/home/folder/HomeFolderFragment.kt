@@ -27,18 +27,13 @@ class HomeFolderFragment :
             viewModel.toNotes(it)
         }
 
-
         initObserve()
         renderHome()
-
-
     }
 
     fun initObserve() {
         viewModel.folder.observe(viewLifecycleOwner) {
             foldersAdapter.setData(ArrayList(it))
-
-
         }
     }
 
@@ -52,19 +47,9 @@ class HomeFolderFragment :
                         FolderDataBase(it1)
                     }?.let {
                         viewModel.addFolder(it)
-
                     }
                 }
             }
         }
     }
 }
-
-
-
-
-
-
-
-
-

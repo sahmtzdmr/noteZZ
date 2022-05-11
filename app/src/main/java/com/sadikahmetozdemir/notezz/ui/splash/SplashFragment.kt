@@ -18,8 +18,6 @@ class SplashFragment :
         lifecycleScope.launch(Dispatchers.Main) {
             delay(3000)
             findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHomeFolderFragment())
-
         }
     }
-
 }

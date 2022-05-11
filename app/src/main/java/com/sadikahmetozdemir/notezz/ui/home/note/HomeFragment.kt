@@ -40,7 +40,6 @@ class HomeFragment :
         binding.layerFAB.setOnClickListener {
             val folder: Int = arguments?.getInt("folderId") ?: -1
             folder.let { it1 -> viewModel.goAddNote(folder) }
-
         }
         initObserve()
         renderHome()

@@ -18,6 +18,4 @@ class FolderConverter @Inject constructor() {
     fun jsonToFolder(folderDataBase: String): FolderDataBase {
         return fromJson<FolderDataBase>(folderDataBase)
     }
-
-
 }
