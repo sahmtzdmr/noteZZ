@@ -13,26 +13,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val defaultRepository: DefaultRepository,
-    var savedStateHandle: SavedStateHandle
+    private val defaultRepository: DefaultRepository
 ) : BaseViewModel() {
     private val _notes: MutableLiveData<List<NotesDatabase>> = MutableLiveData()
     val notes: LiveData<List<NotesDatabase>> get() = _notes
     var deletedNote: NotesDatabase? = null
     var searchResult: LiveData<List<NotesDatabase>> = MutableLiveData()
-    //private val folderId: Int = savedStateHandle.get<Int>("folderId") ?: -1
-//    private val folder = savedStateHandle.get<FolderDataBase>(AddNoteViewModel.FOLDER_ID)
-
-    fun getNotes() {
-        sendRequest(
-            request = { defaultRepository.getNotes() },
-            success = {
-                viewModelScope.launch {
-                    _notes.value = it
-                }
-            }
-        )
-    }
 
     fun getNotesByFolder(folderId: Int) {
         sendRequest(

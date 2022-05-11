@@ -12,11 +12,6 @@ class DefaultRepository @Inject constructor(
     private val folderDao: FolderDao
 ) : BaseRepository() {
 
-    suspend fun getNotes(): List<NotesDatabase> {
-        return execute {
-            notesDao.getCardsData()
-        }
-    }
 
     suspend fun addNote(notesDatabase: NotesDatabase) {
         return execute {

@@ -4,8 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.147" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.1" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_create_new_folder_24.xml" value="0.1" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_folder_24.xml" value="0.1" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.1" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_mic_24.xml" value="0.147" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_notes_24.xml" value="0.147" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.147" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_basic_folder.xml" value="0.125" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_folder_add.xml" value="0.1" />
