@@ -25,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
 import com.sadikahmetozdemir.notezz.databinding.FragmentAddNoteBinding
+import com.sadikahmetozdemir.notezz.utils.toDateString
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -62,6 +63,7 @@ class AddNoteFragment :
             fabVoice.setOnClickListener {
                 askSpeechInput()
             }
+            currentDate.text = Calendar.getInstance().time.toDateString()
         }
         registerLauncher()
     }
