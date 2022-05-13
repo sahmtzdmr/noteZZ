@@ -18,7 +18,7 @@ interface NotesDao {
     @Update
     suspend fun update(note: NotesDatabase)
 
-    @Query("SELECT * FROM notes WHERE data LIKE :data")
+    @Query("SELECT * FROM notes WHERE data LIKE :data ORDER BY id DESC")
     fun search(data: String): LiveData<List<NotesDatabase>>
 
     @Query("select * from notes where folder_id=:folderId ORDER BY id DESC")

@@ -48,7 +48,8 @@ class HomeViewModel @Inject constructor(
     }
 
     fun search(data: String) {
-        sendRequest(request = { defaultRepository.search(data) }, success = {
+        sendRequest(request = { defaultRepository.search(data) },
+            success = {
             searchResult = it
         })
     }

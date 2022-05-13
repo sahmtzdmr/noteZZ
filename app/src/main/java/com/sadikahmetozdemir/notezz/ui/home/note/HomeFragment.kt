@@ -52,6 +52,15 @@ class HomeFragment :
 
     override fun onResume() {
         super.onResume()
+        binding.searchView.setOnSearchClickListener {
+            binding.ivFolderDelete.visibility = View.GONE
+            binding.toolbarTv.visibility = View.GONE
+        }
+        binding.searchView.setOnCloseListener {
+           binding.toolbarTv.visibility = View.VISIBLE
+           binding.ivFolderDelete.visibility = View.VISIBLE
+            return@setOnCloseListener false
+        }
         binding.searchView.setOnQueryTextListener(this)
     }
 
@@ -94,4 +103,5 @@ class HomeFragment :
         }
         return true
     }
+
 }
