@@ -39,27 +39,33 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
         sendRequest(
             request = {
                 deletedFolder?.let { defaultRepository.deleteFolder(it) }
-            }
-        )
-    }
-
-    fun toNotes(folderID: Int) {
-        navigate(
-            HomeFolderFragmentDirections.actionHomeFolderFragmentToHomeFragment(
-                folderID
-            )
-        )
-    }
-
-    fun toDeleteDialog() {
-        navigate(HomeFolderFragmentDirections.actionHomeFolderFragmentToFolderDeleteFragment())
-    }
-
-    fun fetchFolder() {
-        sendRequest(request = { defaultRepository.getFolder() }, success = {
-            viewModelScope.launch {
+                defaultRepository.getFolder()
+            }, success = {
                 _folder.value = it
-            }
-        })
+
+
+            })
+
     }
+
+
+fun toNotes(folderID: Int) {
+    navigate(
+        HomeFolderFragmentDirections.actionHomeFolderFragmentToHomeFragment(
+            folderID
+        )
+    )
+}
+
+fun toDeleteDialog() {
+    navigate(HomeFolderFragmentDirections.actionHomeFolderFragmentToFolderDeleteFragment())
+}
+
+fun fetchFolder() {
+    sendRequest(request = { defaultRepository.getFolder() }, success = {
+        viewModelScope.launch {
+            _folder.value = it
+        }
+    })
+}
 }

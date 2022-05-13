@@ -144,8 +144,11 @@ class AddNoteFragment :
                     activityResultLauncher.launch(intentToGallery)
                 } else {
                     // permission denied
-
-                    // Toast
+                    Toast.makeText(
+                        requireContext(),
+                        "İzin vermeniz gereklidir.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }
