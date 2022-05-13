@@ -34,4 +34,10 @@
         <item name="backgroundColor">#707070</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="roundedImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
+
+    </style>
 </resources>

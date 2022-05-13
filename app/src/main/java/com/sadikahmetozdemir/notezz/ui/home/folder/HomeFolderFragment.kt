@@ -26,6 +26,10 @@ class HomeFolderFragment :
         foldersAdapter.itemClicked = {
             viewModel.toNotes(it)
         }
+        foldersAdapter.DeleteItemClicked = {
+            viewModel.toDeleteDialog()
+            viewModel.deletedFolder = it
+        }
 
         initObserve()
         renderHome()
@@ -41,7 +45,6 @@ class HomeFolderFragment :
         binding.apply {
             setFragmentResultListener("request_add") { _, bundle ->
                 val folderName = bundle.getString("add")
-                val folderID = bundle.getInt("add")
                 if (bundle.getString("add")?.isNotEmpty() == true) {
                     folderName?.let { it1 ->
                         FolderDataBase(it1)
@@ -50,6 +53,15 @@ class HomeFolderFragment :
                     }
                 }
             }
+            setFragmentResultListener("folder_delete") { _, bundle ->
+                if (bundle.getBoolean("delete", false)) {
+                    viewModel.deleteFolder()
+                    viewModel.fetchFolder()
+
+                }
+
+            }
+
         }
     }
 }

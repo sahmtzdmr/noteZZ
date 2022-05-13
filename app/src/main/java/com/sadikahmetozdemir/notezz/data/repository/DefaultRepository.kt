@@ -51,4 +51,10 @@ class DefaultRepository @Inject constructor(
     suspend fun getFolder(): List<FolderDataBase> {
         return execute { folderDao.getFolders() }
     }
+
+    suspend fun deleteFolder(folderDataBase: FolderDataBase) {
+        return execute {
+            folderDao.delete(folderDataBase)
+        }
+    }
 }

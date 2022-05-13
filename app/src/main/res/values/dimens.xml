@@ -20,5 +20,8 @@
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_52">52dp</dimen>
     <dimen name="thrash_size">42dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="elevation_10">10dp</dimen>
+    <dimen name="folder_delete_icon_size">40dp</dimen>
 
 </resources>

@@ -8,6 +8,7 @@
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_create_new_folder_24.xml" value="0.1" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_folder_24.xml" value="0.1" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_folder_delete_24.xml" value="0.2155" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.1" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_mic_24.xml" value="0.147" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/drawable/ic_baseline_notes_24.xml" value="0.147" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/custom_note_raw.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_add_folder_dialog.xml" value="0.25" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_add_note.xml" value="0.24452554744525548" />
+        <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_folder_delete.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_home.xml" value="0.24452554744525548" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_home_folder.xml" value="0.264" />
         <entry key="..\:/Users/Sadik/AndroidStudioProjects/NoteZZ/app/src/main/res/layout/fragment_image_pop_up.xml" value="0.25416666666666665" />

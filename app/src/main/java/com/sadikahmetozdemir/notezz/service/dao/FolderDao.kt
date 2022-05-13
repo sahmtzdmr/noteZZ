@@ -17,5 +17,5 @@ interface FolderDao {
     suspend fun getFolders(): List<FolderDataBase>
 
     @Delete
-    suspend fun delete(note: NotesDatabase)
+    suspend fun delete(folderDataBase: FolderDataBase)
 }

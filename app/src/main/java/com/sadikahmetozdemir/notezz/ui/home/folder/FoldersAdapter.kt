@@ -11,6 +11,8 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
 
     private var folderList: ArrayList<FolderDataBase>? = null
     var itemClicked: ((Int) -> Unit)? = null
+    var DeleteItemClicked: ((FolderDataBase) -> Unit)? = null
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
@@ -44,8 +46,15 @@ class FoldersAdapter : RecyclerView.Adapter<FoldersAdapter.ViewHolder>() {
                 tvFolderName.text = item.folder
                 ivFolder.setOnClickListener {
                     item.folderId?.let { folderId ->
-                        folderId
                         itemClicked?.invoke(folderId)
+                    }
+                }
+                ivFolderDelete.setOnClickListener {
+                    if (bindingAdapterPosition != RecyclerView.NO_POSITION) {
+                        val currentItem = folderList?.get(bindingAdapterPosition)
+                        currentItem?.let {
+                            DeleteItemClicked?.invoke(it)
+                        }
                     }
                 }
             }

@@ -15,6 +15,7 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
     BaseViewModel() {
     private val _folder: MutableLiveData<List<FolderDataBase>> = MutableLiveData()
     val folder: LiveData<List<FolderDataBase>> get() = _folder
+    var deletedFolder: FolderDataBase? = null
 
     fun goToFolder() {
         navigate(HomeFolderFragmentDirections.actionHomeFolderFragmentToAddFolderDialogFragment())
@@ -26,10 +27,18 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
                 defaultRepository.addFolder(folderDataBase)
                 defaultRepository.getFolder()
             }, success = {
-            _folder.value = it
-        },
+                _folder.value = it
+            },
             error = {
                 it
+            }
+        )
+    }
+
+    fun deleteFolder() {
+        sendRequest(
+            request = {
+                deletedFolder?.let { defaultRepository.deleteFolder(it) }
             }
         )
     }
@@ -40,6 +49,10 @@ class HomeFolderViewModel @Inject constructor(private val defaultRepository: Def
                 folderID
             )
         )
+    }
+
+    fun toDeleteDialog() {
+        navigate(HomeFolderFragmentDirections.actionHomeFolderFragmentToFolderDeleteFragment())
     }
 
     fun fetchFolder() {
