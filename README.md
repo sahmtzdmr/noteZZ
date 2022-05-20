@@ -4,7 +4,7 @@ It is a note application where you can add photos and search between notes.
 
 ## Screenshots
 
-![ScreenShot](https://media.giphy.com/media/UmrtT0hFvh5f43dpjy/giphy-downsized-large.gif)
+![ScreenShot](https://media.giphy.com/media/SlVVQNK6qTqmGTXAFo/giphy.gif)
 
 ## Summary
 
