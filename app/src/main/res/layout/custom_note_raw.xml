@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:background="@color/white"
         android:checkable="true"
         android:clickable="true"
@@ -21,18 +21,23 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@drawable/note_paper"
             android:orientation="vertical"
             android:padding="@dimen/padding_10">
 
             <TextView
                 android:id="@+id/data"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:maxLines="3"
                 android:text="@string/data"
-                android:maxLines="2"
                 android:ellipsize="end"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                app:layout_constraintHorizontal_bias="0"
+                android:paddingTop="@dimen/padding_10"
+                app:layout_constraintVertical_bias="0.2"
+                app:layout_constraintBottom_toTopOf="@id/date"
+                app:layout_constraintEnd_toStartOf="@id/iv_delete"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,19 +49,27 @@
                 android:text="@string/date"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="@dimen/text_size_11"
+
+                android:paddingBottom="@dimen/padding_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/data" />
+                app:layout_constraintTop_toBottomOf="@id/data"
+                app:layout_constraintVertical_bias="1" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_delete"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="@dimen/thrash_size"
+                android:paddingTop="@dimen/padding_10"
+                android:layout_height="@dimen/thrash_size"
                 android:src="@drawable/ic_baseline_delete_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0"
                 app:layout_constraintHorizontal_bias="1"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

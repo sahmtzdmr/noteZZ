@@ -1,16 +1,19 @@
 package com.sadikahmetozdemir.notezz.ui.addnote
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.Calendar
-import java.util.Date
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
-class AddNoteViewModel @Inject constructor(private val defaultRepository: DefaultRepository) :
+class AddNoteViewModel @Inject constructor(
+    private val defaultRepository: DefaultRepository,
+    savedStateHandle: SavedStateHandle
+) :
     BaseViewModel() {
     private val notes = MutableLiveData<NotesDatabase?>()
     var noteData = MutableLiveData("")
@@ -18,6 +21,7 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
     var noteDate = Date()
     private var getCharacter: Long? = null
     var image: String? = null
+    var folderId: Int? = null
 
     private fun saveData() {
         note = noteData.value.toString()
@@ -26,7 +30,6 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
     }
 
     fun addNote() {
-
         if (noteData.value.isNullOrEmpty()) {
             showToast(ADD_TEXT)
         } else {
@@ -37,9 +40,10 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
                     defaultRepository.addNote(
                         NotesDatabase(
                             note,
-                            noteDate.toString(),
+                            noteDate,
                             getCharacter!!,
-                            image
+                            image,
+                            folderId!!
                         )
                     )
                 },
@@ -56,5 +60,6 @@ class AddNoteViewModel @Inject constructor(private val defaultRepository: Defaul
     companion object {
         val ADD_TEXT = "Bir not giriniz."
         val SUCCESS_ADD = "Not başarıyla eklendi."
+        const val FOLDER_ID = "folderID"
     }
 }

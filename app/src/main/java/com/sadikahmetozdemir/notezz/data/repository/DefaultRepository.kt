@@ -1,19 +1,17 @@
 package com.sadikahmetozdemir.notezz.data.repository
 
 import androidx.lifecycle.LiveData
+import com.sadikahmetozdemir.notezz.data.local.dto.FolderDataBase
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
+import com.sadikahmetozdemir.notezz.service.dao.FolderDao
 import com.sadikahmetozdemir.notezz.service.dao.NotesDao
 import javax.inject.Inject
 
 class DefaultRepository @Inject constructor(
-    private val notesDao: NotesDao
+    private val notesDao: NotesDao,
+    private val folderDao: FolderDao
 ) : BaseRepository() {
 
-    suspend fun getNotes(): List<NotesDatabase> {
-        return execute {
-            notesDao.getCardsData()
-        }
-    }
 
     suspend fun addNote(notesDatabase: NotesDatabase) {
         return execute {
@@ -35,5 +33,28 @@ class DefaultRepository @Inject constructor(
 
     fun search(data: String): LiveData<List<NotesDatabase>> {
         return notesDao.search(data)
+    }
+
+    suspend fun addFolder(folderDataBase: FolderDataBase) {
+        return execute {
+            folderDao.insert(folderDataBase)
+        }
+    }
+
+    suspend fun getNotesByFolder(folderId: Int): List<NotesDatabase> {
+        return execute {
+            folderId
+            notesDao.getNotesByFolder(folderId)
+        }
+    }
+
+    suspend fun getFolder(): List<FolderDataBase> {
+        return execute { folderDao.getFolders() }
+    }
+
+    suspend fun deleteFolder(folderDataBase: FolderDataBase) {
+        return execute {
+            folderDao.delete(folderDataBase)
+        }
     }
 }

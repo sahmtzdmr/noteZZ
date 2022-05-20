@@ -25,6 +25,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sadikahmetozdemir.notezz.R
 import com.sadikahmetozdemir.notezz.base.BaseFragment
 import com.sadikahmetozdemir.notezz.databinding.FragmentAddNoteBinding
+import com.sadikahmetozdemir.notezz.utils.toDateString
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -42,6 +43,13 @@ class AddNoteFragment :
     var selectedBitmap: Bitmap? = null
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
     private lateinit var permissionLauncher: ActivityResultLauncher<String>
+    private var folderId: Int? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        folderId = arguments?.getInt("folderID") ?: -1
+        viewModel.folderId = folderId
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,6 +63,7 @@ class AddNoteFragment :
             fabVoice.setOnClickListener {
                 askSpeechInput()
             }
+            currentDate.text = Calendar.getInstance().time.toDateString()
         }
         registerLauncher()
     }
@@ -135,7 +144,11 @@ class AddNoteFragment :
                     activityResultLauncher.launch(intentToGallery)
                 } else {
                     // permission denied
-                    // Toast
+                    Toast.makeText(
+                        requireContext(),
+                        "İzin vermeniz gereklidir.",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             }
     }

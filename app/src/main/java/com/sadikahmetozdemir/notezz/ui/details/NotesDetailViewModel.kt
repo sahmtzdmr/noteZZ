@@ -6,6 +6,7 @@ import com.sadikahmetozdemir.notezz.base.BaseViewModel
 import com.sadikahmetozdemir.notezz.data.local.dto.NotesDatabase
 import com.sadikahmetozdemir.notezz.data.repository.DefaultRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -22,6 +23,7 @@ class NotesDetailViewModel @Inject constructor(
         sendRequest(
             request = {
                 notes?.let {
+                    it.date = Calendar.getInstance().time
                     defaultRepository.saveNote(it)
                 }
             },

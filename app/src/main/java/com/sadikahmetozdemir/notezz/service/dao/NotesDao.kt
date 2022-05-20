@@ -15,14 +15,14 @@ interface NotesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(notesDatabase: NotesDatabase)
 
-    @Query("SELECT * FROM notes ORDER BY id DESC")
-    suspend fun getCardsData(): List<NotesDatabase>
-
     @Update
     suspend fun update(note: NotesDatabase)
 
-    @Query("SELECT * FROM notes WHERE data LIKE :data")
+    @Query("SELECT * FROM notes WHERE data LIKE :data ORDER BY id DESC")
     fun search(data: String): LiveData<List<NotesDatabase>>
+
+    @Query("select * from notes where folder_id=:folderId ORDER BY id DESC")
+    suspend fun getNotesByFolder(folderId: Int): List<NotesDatabase>
 
     @Delete
     suspend fun delete(note: NotesDatabase)
